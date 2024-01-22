@@ -1,0 +1,23 @@
+{
+  "name": "playwright-memlab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshkapple/playwright-memlab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshkapple/playwright-memlab/issues"
+  },
+  "homepage": "https://github.com/joshkapple/playwright-memlab#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.41.1",
+    "@types/node": "^20.11.5",
+    "memlab": "^1.1.43"
+  }
+}
