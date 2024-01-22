@@ -1,15 +1,20 @@
-import {test, expect} from '@playwright/test';
-import {captureHeapSnapshot} from '../memlab/memlab-api'
+import {expect} from '@playwright/test';
+import {memlabTest as test} from "../memlab/MemlabTools";
 
-test('has title', async ({page}, testInfo) => {
+test('has title', async ({page, memlabTool}, testInfo) => {
     await page.goto('https://playwright.dev/');
 
-    await captureHeapSnapshot(page, 1, "has_title")
+    await memlabTool.startTrackingHeap()
+    await memlabTool.captureHeapSnapshot(1, "has_title")
 
     await page.goto('https://playwright.dev/tjdsal');
+    await memlabTool.captureHeapSnapshot( 2, "has_title")
 
+    await page.goto('https://playwright.dev/');
+    await memlabTool.captureHeapSnapshot(3, "has_title")
 
-    await captureHeapSnapshot(page, 2, "has_title")
+    memlabTool.clearCDPSession()
+
 
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/Playwright/);
